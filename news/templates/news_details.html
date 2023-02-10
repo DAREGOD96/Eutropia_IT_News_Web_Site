@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}News Detail{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-6 text-center align-self-center">
+   <img src="{{news.news_image.url}}" alt="" class="img-fluid img-thumbnail">
+  </div>
+  <div class="col-sm-5 offset-sm-1">
+   <h2>{{news.news_title}}</h2>
+   <hr>
+   <ul>
+    <li>
+     {{ news.news_description}}
+    </li>
+   </ul> <br>
+   <a href="{% url 'updatenews' news.id %}" class="btn btn-primary shadow px-5 py-2 ms-4">Update News</a>
+   <a href="{% url 'deletenews' news.id %}" class="btn btn-danger shadow px-5 py-2 ms-4">Delete News</a>
+
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

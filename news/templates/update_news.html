@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update News{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-8 offset-sm-1">
+   
+   <form action="" method="POST" >
+    {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label">Title : </label>
+          <input type="text" required name="news_title" value="{{news.news_title}}" class="form-control" placeholder="Enter Title">
+        </div>
+        <br>
+        <div class="mb-3">
+          {% if news.news_image %}
+            <img src="{{news.news_image.url}}" alt="" class="img-fluid img-thumbnail">
+          {% endif %}
+          <label for="" class="form-label">Image : </label> <br>
+          <input type="file" name="news_image" class="form-control"  placeholder="Enter Image URL">  
+        </div>
+        <br>
+        <div class="mb-3">
+          <label for="" class="form-label">Description : </label>
+          <textarea rows="3" required name="news_description" class="form-control" placeholder="Enter Description">{{news.news_description}}</textarea>
+        </div> <br>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+
+
+
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
